@@ -36,8 +36,8 @@ from neon_llm_core.llm import NeonLLM
 class Claude(NeonLLM):
 
     mq_to_llm_role = {
-        "user": "user",
-        "llm": "assistant"
+        "user": HUMAN_PROMPT,
+        "llm": AI_PROMPT
     }
 
     def __init__(self, config):
