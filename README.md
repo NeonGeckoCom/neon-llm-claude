@@ -25,12 +25,12 @@ MQ:
   port: <MQ Port>
   server: <MQ Hostname or IP>
   users:
-    neon_llm_chat_gpt:
+    neon_llm_claude:
       password: <neon_claude user's password>
       user: neon_claude
-LLM_CHAT_GPT:
+LLM_CLAUDE:
   key: ""
-  model: "gpt-3.5-turbo"
+  model: "claude-instant-1"
   role: "You are trying to give a short answer in less than 40 words."
   context_depth: 3
   max_tokens: 100

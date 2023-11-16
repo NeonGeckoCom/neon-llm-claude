@@ -44,7 +44,7 @@ class ClaudeMQ(NeonLLMMQConnector):
     @property
     def model(self):
         if self._model is None:
-            self._model = Сlaude(self.model_config)
+            self._model = Claude(self.model_config)
         return self._model
 
     def warmup(self):

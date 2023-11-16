@@ -69,7 +69,7 @@ with open(path.join(BASE_PATH, "version.py"), "r", encoding="utf-8") as v:
 setup(
     name='neon-llm-claude',
     version=version,
-    description='LLM service for Chat GPT',
+    description='LLM service for Anthropic Claude',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/NeonGeckoCom/neon-llm-claude',
