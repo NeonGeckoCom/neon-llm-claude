@@ -24,6 +24,8 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
+
 import openai
 from openai.embeddings_utils import get_embeddings, distances_from_embeddings
 
@@ -40,11 +42,14 @@ class Claude(NeonLLM):
 
     def __init__(self, config):
         super().__init__(config)
+        self._openai = None
+
         self.model_name = config["model"]
         self.role = config["role"]
         self.context_depth = config["context_depth"]
         self.max_tokens = config["max_tokens"]
         self.api_key = config["key"]
+        self.openai_key = config["openai_key"]
         self.warmup()
 
     @property
@@ -56,11 +61,18 @@ class Claude(NeonLLM):
         return ""
 
     @property
-    def model(self) -> openai:
+    def model(self) -> Anthropic:
         if self._model is None:
-            openai.api_key = self.api_key
-            self._model = openai
+            anthropic = Anthropic(api_key=self.api_key)
+            self._model = anthropic
         return self._model
+
+    @property
+    def openai(self) -> openai:
+        if self._openai is None:
+            openai.api_key = self.api_key
+            self._openai = openai
+        return self._openai
 
     @property
     def llm_model_name(self) -> str:
@@ -72,6 +84,7 @@ class Claude(NeonLLM):
 
     def warmup(self):
         self.model
+        self.openai
 
     def get_sorted_answer_indexes(self, question: str, answers: List[str], persona: dict) -> List[int]:
         """

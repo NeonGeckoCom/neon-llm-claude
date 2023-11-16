@@ -30,6 +30,7 @@ MQ:
       user: neon_claude
 LLM_CLAUDE:
   key: ""
+  openai_key: ""
   model: "claude-instant-1"
   role: "You are trying to give a short answer in less than 40 words."
   context_depth: 3
