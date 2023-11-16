@@ -24,15 +24,15 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from neon_llm_chatgpt.rmq import ChatgptMQ
+from neon_llm_claude.rmq import ClaudeMQ
 
 
 def main():
     # Run RabbitMQ
-    chatgptMQ = ChatgptMQ()
-    chatgptMQ.run(run_sync=False, run_consumers=True,
+    claudeMQ = ClaudeMQ()
+    claudeMQ.run(run_sync=False, run_consumers=True,
                   daemonize_consumers=True)
-    chatgptMQ.observer_thread.join()
+    claudeMQ.observer_thread.join()
 
 
 if __name__ == "__main__":

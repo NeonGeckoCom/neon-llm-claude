@@ -1,5 +1,5 @@
-# NeonAI LLM ChatGPT
-Proxies API calls to ChatGPT.
+# NeonAI LLM Claude
+Proxies API calls to Anthropic Claude.
 
 ## Request Format
 API requests should include `history`, a list of tuples of strings, and the current
@@ -26,8 +26,8 @@ MQ:
   server: <MQ Hostname or IP>
   users:
     neon_llm_chat_gpt:
-      password: <neon_chatgpt user's password>
-      user: neon_chatgpt
+      password: <neon_claude user's password>
+      user: neon_claude
 LLM_CHAT_GPT:
   key: ""
   model: "gpt-3.5-turbo"
@@ -40,6 +40,6 @@ LLM_CHAT_GPT:
 For example, if your configuration resides in `~/.config`:
 ```shell
 export CONFIG_PATH="/home/${USER}/.config"
-docker run -v ${CONFIG_PATH}:/config neon_llm_chatgpt
+docker run -v ${CONFIG_PATH}:/config neon_llm_claude
 ```
 > Note: If connecting to a local MQ server, you may need to specify `--network host`

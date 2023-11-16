@@ -1,7 +1,7 @@
 FROM python:3.9-slim
 
 LABEL vendor=neon.ai \
-    ai.neon.name="neon-llm-chatgpt"
+    ai.neon.name="neon-llm-claude"
 
 ENV OVOS_CONFIG_BASE_FOLDER neon
 ENV OVOS_CONFIG_FILENAME diana.yaml
@@ -12,4 +12,4 @@ WORKDIR /app
 COPY . /app
 RUN pip install /app
 
-CMD [ "neon-llm-chatgpt" ]
+CMD [ "neon-llm-claude" ]
