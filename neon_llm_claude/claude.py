@@ -122,22 +122,20 @@ class Claude(NeonLLM):
         """
             Assembles prompt engineering logic
             Setup Guidance:
-            https://platform.openai.com/docs/guides/gpt/chat-completions-api
+            https://docs.anthropic.com/claude/docs/introduction-to-prompt-design
 
             :param message: Incoming prompt
             :param chat_history: History of preceding conversation
             :returns: assembled prompt
         """
         system_prompt = persona.get("description", self._system_prompt)
-        messages = [
-            {"role": "system", "content": system_prompt},
-        ]
+        prompt = system_prompt
         # Context N messages
         for role, content in chat_history[-self.context_depth:]:
             role_claude = self.convert_role(role)
-            messages.append({"role": role_claude, "content": content})
-        messages.append({"role": "user", "content": message})
-        return messages
+            prompt += f"{role_claude} {content}"
+        prompt += f"{self.convert_role('user')} {message}"
+        return prompt
 
     def _score(self, prompt: str, targets: List[str], persona: dict) -> List[float]:
         """
