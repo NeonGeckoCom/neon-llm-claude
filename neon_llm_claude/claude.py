@@ -134,7 +134,7 @@ class Claude(NeonLLM):
         for role, content in chat_history[-self.context_depth:]:
             role_claude = self.convert_role(role)
             prompt += f"{role_claude} {content}"
-        prompt += f"{self.convert_role('user')} {message}"
+        prompt += f"{self.convert_role('user')} {message}{self.convert_role('llm')}"
         return prompt
 
     def _score(self, prompt: str, targets: List[str], persona: dict) -> List[float]:
