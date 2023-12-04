@@ -15,7 +15,7 @@ MQ:
       user: neon_api_utils
       password: Klatchat2021
 LLM_CLAUDE:
-  model: "claude-instant-1"
+  model: "claude-2"
   role: "You are trying to give a short answer in less than 40 words."
   context_depth: 3
   max_tokens: 100

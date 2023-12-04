@@ -31,7 +31,7 @@ MQ:
 LLM_CLAUDE:
   key: ""
   openai_key: ""
-  model: "claude-instant-1"
+  model: "claude-2"
   role: "You are trying to give a short answer in less than 40 words."
   context_depth: 3
   max_tokens: 100
