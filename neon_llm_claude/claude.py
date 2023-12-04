@@ -70,7 +70,7 @@ class Claude(NeonLLM):
     @property
     def openai(self) -> openai:
         if self._openai is None:
-            openai.api_key = self.api_key
+            openai.api_key = self.openai_key
             self._openai = openai
         return self._openai
 
