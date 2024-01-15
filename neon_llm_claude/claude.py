@@ -43,6 +43,7 @@ class Claude(NeonLLM):
     def __init__(self, config):
         super().__init__(config)
         self._openai = None
+        self._context_depth = 0
 
         self.model_name = config["model"]
         self.role = config["role"]
@@ -51,6 +52,14 @@ class Claude(NeonLLM):
         self.api_key = config["key"]
         self.openai_key = config["openai_key"]
         self.warmup()
+
+    @property
+    def context_depth(self):
+        return self._context_depth
+    
+    @context_depth.setter
+    def context_depth(self, value):
+        self._context_depth = value + value % 2
 
     @property
     def tokenizer(self) -> None:
