@@ -28,4 +28,4 @@ LLM_CLAUDE:
 llm_bots:
   claude:
     - description: You are trying to give a short answer in less than 40 words.
-      name: claude
+      name: assistant
