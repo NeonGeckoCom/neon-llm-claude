@@ -25,14 +25,15 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from neon_llm_claude.rmq import ClaudeMQ
+from neon_utils.log_utils import init_log
 
 
 def main():
+    init_log(log_name="claude")
     # Run RabbitMQ
-    claudeMQ = ClaudeMQ()
-    claudeMQ.run(run_sync=False, run_consumers=True,
-                  daemonize_consumers=True)
-    claudeMQ.observer_thread.join()
+    claude_mq_service = ClaudeMQ()
+    claude_mq_service.run(run_sync=False, run_consumers=True,
+                          daemonize_consumers=True)
 
 
 if __name__ == "__main__":
